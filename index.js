@@ -34,29 +34,36 @@ function contains(target, pattern) {
 
 function mainProgram(event) {
   console.log(event);
+  const profile = client.getProfile(event.source.userId);
+  console.log(profile);
   switch (event.type) {
     case 'join':
       return client.replyMessage(event.replyToken, {
         type: 'text',
-        text: 'Hallo Semuanya, Seiga telah tiba di grup',
+        text: 'Hallo Semuanya, Foody Ways telah tiba di grup. Ketikan "/help" untuk petunjuk',
       });
     case 'follow':
       return client.replyMessage(event.replyToken, {
         type: 'text',
-        text: 'Hallo teman, terimakasih sudah follow Seiga',
+        text: 'Hallo Semuanya, Foody Ways telah tiba di grup. Ketikan "/help" untuk petunjuk',
       });
     case 'message':
       const message = event.message;
       if (message.type === 'text') {
-        if (contains(message.text.toLowerCase(), ['hai', 'hallo', 'halo', 'salam'])) {
+        if (contains(message.text.toLowerCase(), ['/hai', '/halo', '/hi'])) {
           return client.replyMessage(event.replyToken, {
             type: 'text',
-            text: 'Halo Juga, Yoroshiku!!',
+            text: 'Halo Juga, Silahkan pesan makanan!!',
+          });
+        } else if (message.text === '/help') {
+          return client.replyMessage(event.replyToken, {
+            type: 'text',
+            text: '/menu /hi /about /link',
           });
         } else {
           return client.replyMessage(event.replyToken, {
             type: 'text',
-            text: 'Waduh saya tidak paham',
+            text: 'Maaf command tidak diketahui',
           });
         }
       } else if (message.type === 'sticker') {
@@ -69,7 +76,7 @@ function mainProgram(event) {
     default:
       return client.replyMessage(event.replyToken, {
         type: 'text',
-        text: 'Waduh saya tidak paham',
+        text: 'Maaf command tidak diketahui',
       });
   }
 }
