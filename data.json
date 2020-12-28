@@ -1,0 +1,118 @@
+{
+  "foods": [
+    {
+      "id": 1,
+      "name": "Noodle",
+      "price": 25000,
+      "count": 1,
+      "img": "https://cdn.idntimes.com/content-images/post/20191220/73017677-2248225938749972-2951715633794400605-n-1-9a82bb25cb27a28a5ba980bed5b11493_600x400.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Rendang",
+      "price": 30000,
+      "count": 1,
+      "img": "https://img.inews.co.id/media/600/files/inews_new/2020/09/02/Makanan_Khas_Aceh.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Kimchi",
+      "price": 15000,
+      "count": 1,
+      "img": "https://i0.wp.com/i-gen.co.id/wp-content/uploads/2020/04/kimchi-1.jpg?fit=600%2C400&ssl=1"
+    },
+    {
+      "id": 4,
+      "name": "Omlete",
+      "price": 23000,
+      "count": 1,
+      "img": "https://cdn-brilio-net.akamaized.net/news/2020/06/12/186358/1247720-makanan-sehat-anak.jpg"
+    },
+    {
+      "id": 5,
+      "name": "Jidori Fish",
+      "price": 28000,
+      "count": 1,
+      "img": "https://www.katakini.com/webmin/images/posts/1/2020/2020-05-07/17924aaac73318eb2ee1ddc4c7f99ea1_1.jpg"
+    },
+    {
+      "id": 6,
+      "name": "Rawon",
+      "price": 14000,
+      "count": 1,
+      "img": "https://cdn-cas.orami.co.id/parenting/images/Semarang1.width-800.jpg"
+    },
+    {
+      "id": 7,
+      "name": "Dendeng",
+      "price": 31000,
+      "count": 1,
+      "img": "https://cdn.popbela.com/content-images/post/20190622/04-makanan-praktis-travelling-03c008eecda6a74ea11a608e1b90c096.jpeg"
+    },
+    {
+      "id": 8,
+      "name": "Gurita Asam Manis",
+      "price": 42000,
+      "count": 1,
+      "img": "https://cdn.idntimes.com/content-images/post/20190915/nakji-bokkeum-57edf0095ccd259ac5e4d93da5b5a47e_600x400.jpg"
+    }
+  ],
+  "drinks": [
+    {
+      "id": 1,
+      "name": "Es Teh",
+      "price": 5000,
+      "count": 1,
+      "img": "https://dcywrb6nqrsdp.cloudfront.net/attachment/39722851075277712494.large"
+    },
+    {
+      "id": 2,
+      "name": "Milk Shake",
+      "price": 15000,
+      "count": 1,
+      "img": "https://nyess.co.id/wp-content/uploads/2019/01/milkshake.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Jus Buah Naga",
+      "price": 8000,
+      "count": 1,
+      "img": "https://nyess.co.id/wp-content/uploads/2018/12/juice.jpg"
+    },
+    {
+      "id": 4,
+      "name": "Wedang Jahe",
+      "price": 5000,
+      "count": 1,
+      "img": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/BB1c8mnb.img?h=0&w=600&m=6&q=60&u=t&o=f&l=f"
+    },
+    {
+      "id": 5,
+      "name": "Cocktail",
+      "price": 5000,
+      "count": 1,
+      "img": "https://cdn.idntimes.com/content-images/community/2018/05/es-sarang-burung-6c9d4087921f30e7f91ae62025a9549d_600x400.jpeg"
+    },
+    {
+      "id": 6,
+      "name": "Mint Tea",
+      "price": 5000,
+      "count": 1,
+      "img": "https://rebornprojectmedia.com/wp-content/uploads/2020/05/images-2-1.jpeg"
+    },
+    {
+      "id": 7,
+      "name": "Jus Semangka",
+      "price": 5000,
+      "count": 1,
+      "img": "https://foodspot.co.id/blog/wp-content/uploads/2018/12/two-glasses-of-watermelon-smoothie-600x400.jpg"
+    },
+    {
+      "id": 8,
+      "name": "Lemon Tea",
+      "price": 5000,
+      "count": 1,
+      "img": "https://carihargamurah.com/wp-content/uploads/2020/06/Cuba-Libre-Asal-Kuba.jpg"
+    }
+  ]
+}

@@ -9,6 +9,7 @@ const config = {
   channelSecret: process.env.CHANNEL_SECRET,
 };
 const client = new line.Client(config);
+const data = require('./data.json');
 
 app.use(cors());
 
@@ -31,6 +32,61 @@ function contains(target, pattern) {
   });
   return value === 1;
 }
+
+const food = data.foods.map((food) => ({
+  type: 'bubble',
+  hero: {
+    type: 'image',
+    size: 'full',
+    aspectRatio: '20:13',
+    aspectMode: 'cover',
+    url: food.img,
+  },
+  body: {
+    type: 'box',
+    layout: 'vertical',
+    spacing: 'sm',
+    contents: [
+      {
+        type: 'text',
+        text: food.name,
+        wrap: true,
+        weight: 'bold',
+        size: 'xl',
+      },
+      {
+        type: 'box',
+        layout: 'baseline',
+        contents: [
+          {
+            type: 'text',
+            text: `Rp.${food.price}`,
+            wrap: true,
+            weight: 'bold',
+            size: 'xl',
+            flex: 0,
+          },
+        ],
+      },
+    ],
+  },
+  footer: {
+    type: 'box',
+    layout: 'vertical',
+    spacing: 'sm',
+    contents: [
+      {
+        type: 'button',
+        style: 'primary',
+        action: {
+          type: 'uri',
+          label: 'Open App',
+          uri: 'https://liff.line.me/1655315643-O6DqdDE8',
+        },
+      },
+    ],
+  },
+}));
 
 const mainProgram = async (event) => {
   console.log(event);
@@ -60,165 +116,14 @@ const mainProgram = async (event) => {
             type: 'text',
             text: 'Silahkan ketikkan keyword berikut :\n/menu\n/hi\n/about\n/link',
           });
-        } else if (message.text === '/menu') {
+        } else if (message.text === '/food') {
           return client.replyMessage(event.replyToken, {
             type: 'flex',
             altText: 'this is a flex message',
             contents: {
               type: 'carousel',
               contents: [
-                {
-                  type: 'bubble',
-                  hero: {
-                    type: 'image',
-                    size: 'full',
-                    aspectRatio: '20:13',
-                    aspectMode: 'cover',
-                    url: 'https://scdn.line-apps.com/n/channel_devcenter/img/fx/01_5_carousel.png',
-                  },
-                  body: {
-                    type: 'box',
-                    layout: 'vertical',
-                    spacing: 'sm',
-                    contents: [
-                      {
-                        type: 'text',
-                        text: 'Arm Chair, White',
-                        wrap: true,
-                        weight: 'bold',
-                        size: 'xl',
-                      },
-                      {
-                        type: 'box',
-                        layout: 'baseline',
-                        contents: [
-                          {
-                            type: 'text',
-                            text: '$49',
-                            wrap: true,
-                            weight: 'bold',
-                            size: 'xl',
-                            flex: 0,
-                          },
-                          {
-                            type: 'text',
-                            text: '.99',
-                            wrap: true,
-                            weight: 'bold',
-                            size: 'sm',
-                            flex: 0,
-                          },
-                        ],
-                      },
-                    ],
-                  },
-                  footer: {
-                    type: 'box',
-                    layout: 'vertical',
-                    spacing: 'sm',
-                    contents: [
-                      {
-                        type: 'button',
-                        style: 'primary',
-                        action: {
-                          type: 'uri',
-                          label: 'Add to Cart',
-                          uri: 'https://linecorp.com',
-                        },
-                      },
-                      {
-                        type: 'button',
-                        action: {
-                          type: 'uri',
-                          label: 'Add to wishlist',
-                          uri: 'https://linecorp.com',
-                        },
-                      },
-                    ],
-                  },
-                },
-                {
-                  type: 'bubble',
-                  hero: {
-                    type: 'image',
-                    size: 'full',
-                    aspectRatio: '20:13',
-                    aspectMode: 'cover',
-                    url: 'https://scdn.line-apps.com/n/channel_devcenter/img/fx/01_6_carousel.png',
-                  },
-                  body: {
-                    type: 'box',
-                    layout: 'vertical',
-                    spacing: 'sm',
-                    contents: [
-                      {
-                        type: 'text',
-                        text: 'Metal Desk Lamp',
-                        wrap: true,
-                        weight: 'bold',
-                        size: 'xl',
-                      },
-                      {
-                        type: 'box',
-                        layout: 'baseline',
-                        flex: 1,
-                        contents: [
-                          {
-                            type: 'text',
-                            text: '$11',
-                            wrap: true,
-                            weight: 'bold',
-                            size: 'xl',
-                            flex: 0,
-                          },
-                          {
-                            type: 'text',
-                            text: '.99',
-                            wrap: true,
-                            weight: 'bold',
-                            size: 'sm',
-                            flex: 0,
-                          },
-                        ],
-                      },
-                      {
-                        type: 'text',
-                        text: 'Temporarily out of stock',
-                        wrap: true,
-                        size: 'xxs',
-                        margin: 'md',
-                        color: '#ff5551',
-                        flex: 0,
-                      },
-                    ],
-                  },
-                  footer: {
-                    type: 'box',
-                    layout: 'vertical',
-                    spacing: 'sm',
-                    contents: [
-                      {
-                        type: 'button',
-                        flex: 2,
-                        style: 'primary',
-                        color: '#aaaaaa',
-                        action: {
-                          type: 'uri',
-                          label: 'Add to Cart',
-                          uri: 'https://linecorp.com',
-                        },
-                      },
-                      {
-                        type: 'button',
-                        action: {
-                          type: 'uri',
-                          label: 'Add to wish list',
-                          uri: 'https://linecorp.com',
-                        },
-                      },
-                    ],
-                  },
-                },
+                ...food,
                 {
                   type: 'bubble',
                   body: {
