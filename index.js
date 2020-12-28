@@ -60,10 +60,45 @@ const mainProgram = async (event) => {
             type: 'text',
             text: 'Silahkan ketikkan keyword berikut :\n/menu\n/hi\n/about\n/link',
           });
+        } else if (message.text === '/menu') {
+          return client.replyMessage(event.replyToken, {
+            type: 'flex',
+            contents: {
+              type: 'carousel',
+              contents: [
+                {
+                  type: 'bubble',
+                  body: {
+                    type: 'box',
+                    layout: 'vertical',
+                    contents: [
+                      {
+                        type: 'text',
+                        text: 'First bubble',
+                      },
+                    ],
+                  },
+                },
+                {
+                  type: 'bubble',
+                  body: {
+                    type: 'box',
+                    layout: 'vertical',
+                    contents: [
+                      {
+                        type: 'text',
+                        text: 'Second bubble',
+                      },
+                    ],
+                  },
+                },
+              ],
+            },
+          });
         } else {
           return client.replyMessage(event.replyToken, {
             type: 'text',
-            text: 'Maaf command tidak diketahui',
+            text: 'Maaf command tidak diketahui silahkan kirim "/help" untuk petunjuk',
           });
         }
       } else if (message.type === 'sticker') {
@@ -76,7 +111,7 @@ const mainProgram = async (event) => {
     default:
       return client.replyMessage(event.replyToken, {
         type: 'text',
-        text: 'Maaf command tidak diketahui',
+        text: 'Maaf command tidak diketahui silahkan kirim "/help" untuk petunjuk',
       });
   }
 };
