@@ -18,11 +18,7 @@ app.get('/', (req, res) => {
 });
 
 app.post('/webhook', line.middleware(config), (req, res) => {
-  Promise.all(req.body.events.map(mainProgram))
-    .then((result) => res.json(result))
-    .catch((error) => {
-      console.error(`Promise error ${error}`);
-    });
+  res.status(200).send('Oke');
 });
 
 function mainProgram(event) {
