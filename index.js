@@ -220,7 +220,7 @@ const mainProgram = async (event) => {
             text:
               'Foody Ways, adalah platform food delivery berbasis LIFF, bisa diakses melalui https://liff.line.me/1655315643-O6DqdDE8',
           });
-        } else if (message.text.includes('/')) {
+        } else {
           return client.replyMessage(event.replyToken, {
             type: 'text',
             text: `Hi ${profile.displayName}, Keyword yang kamu masukkan salah, silahkan ikuti petunjuk berikut :\n/hi : Salam\n/food : Daftar Makanan\n/drink : Daftar Minuman\n/about : Deskripsi App\n/link : App Link\n/help : Daftar Command`,
