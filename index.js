@@ -60,6 +60,10 @@ function mainProgram(event) {
           });
         }
       } else if (message.type === 'sticker') {
+        return client.replyMessage(event.replyToken, {
+          type: 'sticker',
+          stickerId: '33913792',
+        });
       }
     default:
       return client.replyMessage(event.replyToken, {
