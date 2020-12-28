@@ -62,38 +62,35 @@ const mainProgram = async (event) => {
           });
         } else if (message.text === '/menu') {
           return client.replyMessage(event.replyToken, {
-            type: 'flex',
-            contents: {
-              type: 'carousel',
-              contents: [
-                {
-                  type: 'bubble',
-                  body: {
-                    type: 'box',
-                    layout: 'vertical',
-                    contents: [
-                      {
-                        type: 'text',
-                        text: 'First bubble',
-                      },
-                    ],
-                  },
+            type: 'carousel',
+            contents: [
+              {
+                type: 'bubble',
+                body: {
+                  type: 'box',
+                  layout: 'vertical',
+                  contents: [
+                    {
+                      type: 'text',
+                      text: 'First bubble',
+                    },
+                  ],
                 },
-                {
-                  type: 'bubble',
-                  body: {
-                    type: 'box',
-                    layout: 'vertical',
-                    contents: [
-                      {
-                        type: 'text',
-                        text: 'Second bubble',
-                      },
-                    ],
-                  },
+              },
+              {
+                type: 'bubble',
+                body: {
+                  type: 'box',
+                  layout: 'vertical',
+                  contents: [
+                    {
+                      type: 'text',
+                      text: 'Second bubble',
+                    },
+                  ],
                 },
-              ],
-            },
+              },
+            ],
           });
         } else {
           return client.replyMessage(event.replyToken, {
