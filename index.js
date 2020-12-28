@@ -33,7 +33,7 @@ function mainProgram(event) {
         text: 'Hallo Semuanya, Seiga is here',
       });
     case 'message':
-      if (event.text.toLowerCase().includes('halo' || 'hai' || 'salam')) {
+      if (event.message.text.toLowerCase().includes('halo' || 'hai' || 'salam')) {
         return client.replyMessage(event.replyToken, {
           type: 'text',
           text: 'Halo Juga, Yoroshiku!!',
