@@ -142,7 +142,7 @@ const drink = data.drinks.map((drink) => ({
   },
 }));
 
-const rest = {
+const seeMore = {
   type: 'bubble',
   body: {
     type: 'box',
@@ -197,7 +197,7 @@ const mainProgram = async (event) => {
             altText: 'this is a flex message',
             contents: {
               type: 'carousel',
-              contents: [...food, ...rest],
+              contents: [...food, seeMore],
             },
           });
         } else if (message.text === '/drink') {
@@ -206,7 +206,7 @@ const mainProgram = async (event) => {
             altText: 'this is a flex message',
             contents: {
               type: 'carousel',
-              contents: [...drink, ...rest],
+              contents: [...drink, seeMore],
             },
           });
         } else if (message.text === '/link') {
