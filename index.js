@@ -63,6 +63,7 @@ function mainProgram(event) {
         return client.replyMessage(event.replyToken, {
           type: 'sticker',
           stickerId: '33913792',
+          packageId: '10811',
         });
       }
     default:
