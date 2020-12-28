@@ -143,25 +143,25 @@ const drink = data.drinks.map((drink) => ({
 }));
 
 const rest = {
-    type: 'bubble',
-    body: {
-      type: 'box',
-      layout: 'vertical',
-      spacing: 'sm',
-      contents: [
-        {
-          type: 'button',
-          flex: 1,
-          gravity: 'center',
-          action: {
-            type: 'uri',
-            label: 'See more',
-            uri: 'https://liff.line.me/1655315643-O6DqdDE8',
-          },
+  type: 'bubble',
+  body: {
+    type: 'box',
+    layout: 'vertical',
+    spacing: 'sm',
+    contents: [
+      {
+        type: 'button',
+        flex: 1,
+        gravity: 'center',
+        action: {
+          type: 'uri',
+          label: 'See more',
+          uri: 'https://liff.line.me/1655315643-O6DqdDE8',
         },
-      ],
-    },
+      },
+    ],
   },
+};
 
 const mainProgram = async (event) => {
   console.log(event);
@@ -189,8 +189,7 @@ const mainProgram = async (event) => {
         } else if (message.text === '/help') {
           return client.replyMessage(event.replyToken, {
             type: 'text',
-            text:
-              `Hi ${profile.displayName},Silahkan ketikkan keyword berikut :\n/hi : Salam\n/food : Daftar Makanan\n/drink : Daftar Minuman\n/about : Deskripsi App\n/link : App Link\n/help : Daftar Command`,
+            text: `Hi ${profile.displayName},Silahkan ketikkan keyword berikut :\n/hi : Salam\n/food : Daftar Makanan\n/drink : Daftar Minuman\n/about : Deskripsi App\n/link : App Link\n/help : Daftar Command`,
           });
         } else if (message.text === '/food') {
           return client.replyMessage(event.replyToken, {
@@ -198,10 +197,7 @@ const mainProgram = async (event) => {
             altText: 'this is a flex message',
             contents: {
               type: 'carousel',
-              contents: [
-                ...food,
-                ...rest
-              ],
+              contents: [...food, ...rest],
             },
           });
         } else if (message.text === '/drink') {
@@ -210,26 +206,21 @@ const mainProgram = async (event) => {
             altText: 'this is a flex message',
             contents: {
               type: 'carousel',
-              contents: [
-                ...drink,
-                ...rest
-              ],
+              contents: [...drink, ...rest],
             },
           });
-        } 
-        else if (message.text === '/link') {
-            return client.replyMessage(event.replyToken, {
-              type: 'text',
-              text: `Hi ${profile.displayName}, silahkan akses App nya di\nhttps://liff.line.me/1655315643-O6DqdDE8`
-            });
-          }
-        else if (message.text === '/about') {
-            return client.replyMessage(event.replyToken, {
-              type: 'text',
-              text: 'Foody Ways, adalah platform food delivery berbasis LIFF, bisa diakses melalui https://liff.line.me/1655315643-O6DqdDE8'
-            });
-          }
-        else if (message.text.includes('/')) {
+        } else if (message.text === '/link') {
+          return client.replyMessage(event.replyToken, {
+            type: 'text',
+            text: `Hi ${profile.displayName}, silahkan akses App nya di\nhttps://liff.line.me/1655315643-O6DqdDE8`,
+          });
+        } else if (message.text === '/about') {
+          return client.replyMessage(event.replyToken, {
+            type: 'text',
+            text:
+              'Foody Ways, adalah platform food delivery berbasis LIFF, bisa diakses melalui https://liff.line.me/1655315643-O6DqdDE8',
+          });
+        } else if (message.text.includes('/')) {
           return client.replyMessage(event.replyToken, {
             type: 'text',
             text: `Maaf ${profile.displayName} command yang kamu masukkan tidak diketahui silahkan kirim "/help" untuk petunjuk`,
