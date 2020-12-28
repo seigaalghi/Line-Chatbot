@@ -165,7 +165,7 @@ const rest = {
 
 const mainProgram = async (event) => {
   console.log(event);
-  const profile = await client.getProfile(event.source.userId);
+  const profile = event.type === 'join' ? null : await client.getProfile(event.source.userId);
   const message = event.message;
   console.log(profile);
   switch (event.type) {
@@ -234,10 +234,7 @@ const mainProgram = async (event) => {
         });
       }
     default:
-      return client.replyMessage(event.replyToken, {
-        type: 'text',
-        text: `Maaf ${profile.displayName} command yang kamu masukkan tidak diketahui silahkan kirim "/help" untuk petunjuk`,
-      });
+      return null;
   }
 };
 
