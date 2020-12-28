@@ -24,25 +24,42 @@ app.post('/webhook', line.middleware(config), (req, res) => {
     });
 });
 
+function contains(target, pattern) {
+  var value = 0;
+  pattern.forEach(function (word) {
+    value = value + target.includes(word);
+  });
+  return value === 1;
+}
+
 function mainProgram(event) {
   console.log(event);
   switch (event.type) {
     case 'join':
       return client.replyMessage(event.replyToken, {
         type: 'text',
-        text: 'Hallo Semuanya, Seiga is here',
+        text: 'Hallo Semuanya, Seiga telah tiba di grup',
+      });
+    case 'follow':
+      return client.replyMessage(event.replyToken, {
+        type: 'text',
+        text: 'Hallo teman, terimakasih sudah follow Seiga',
       });
     case 'message':
-      if (event.message.text.toLowerCase().includes('halo' || 'hai' || 'salam')) {
-        return client.replyMessage(event.replyToken, {
-          type: 'text',
-          text: 'Halo Juga, Yoroshiku!!',
-        });
-      } else {
-        return client.replyMessage(event.replyToken, {
-          type: 'text',
-          text: 'Waduh saya tidak paham',
-        });
+      const message = event.message;
+      if (message.type === 'text') {
+        if (contains(message.text.toLowerCase(), ['hai', 'hallo', 'halo', 'salam'])) {
+          return client.replyMessage(event.replyToken, {
+            type: 'text',
+            text: 'Halo Juga, Yoroshiku!!',
+          });
+        } else {
+          return client.replyMessage(event.replyToken, {
+            type: 'text',
+            text: 'Waduh saya tidak paham',
+          });
+        }
+      } else if (message.type === 'sticker') {
       }
     default:
       return client.replyMessage(event.replyToken, {
