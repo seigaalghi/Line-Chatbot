@@ -142,6 +142,27 @@ const drink = data.drinks.map((drink) => ({
   },
 }));
 
+const rest = {
+    type: 'bubble',
+    body: {
+      type: 'box',
+      layout: 'vertical',
+      spacing: 'sm',
+      contents: [
+        {
+          type: 'button',
+          flex: 1,
+          gravity: 'center',
+          action: {
+            type: 'uri',
+            label: 'See more',
+            uri: 'https://liff.line.me/1655315643-O6DqdDE8',
+          },
+        },
+      ],
+    },
+  },
+
 const mainProgram = async (event) => {
   console.log(event);
   const profile = await client.getProfile(event.source.userId);
@@ -169,7 +190,7 @@ const mainProgram = async (event) => {
           return client.replyMessage(event.replyToken, {
             type: 'text',
             text:
-              'Silahkan ketikkan keyword berikut :\n/food : Daftar Makanan\n/drink : Daftar Minuman\n/hi : Salam\n/about : Deskripsi App\n/link : App Link',
+              `Hi ${profile.displayName},Silahkan ketikkan keyword berikut :\n/hi : Salam\n/food : Daftar Makanan\n/drink : Daftar Minuman\n/about : Deskripsi App\n/link : App Link\n/help : Daftar Command`,
           });
         } else if (message.text === '/food') {
           return client.replyMessage(event.replyToken, {
@@ -179,26 +200,7 @@ const mainProgram = async (event) => {
               type: 'carousel',
               contents: [
                 ...food,
-                {
-                  type: 'bubble',
-                  body: {
-                    type: 'box',
-                    layout: 'vertical',
-                    spacing: 'sm',
-                    contents: [
-                      {
-                        type: 'button',
-                        flex: 1,
-                        gravity: 'center',
-                        action: {
-                          type: 'uri',
-                          label: 'See more',
-                          uri: 'https://liff.line.me/1655315643-O6DqdDE8',
-                        },
-                      },
-                    ],
-                  },
-                },
+                ...rest
               ],
             },
           });
@@ -210,33 +212,27 @@ const mainProgram = async (event) => {
               type: 'carousel',
               contents: [
                 ...drink,
-                {
-                  type: 'bubble',
-                  body: {
-                    type: 'box',
-                    layout: 'vertical',
-                    spacing: 'sm',
-                    contents: [
-                      {
-                        type: 'button',
-                        flex: 1,
-                        gravity: 'center',
-                        action: {
-                          type: 'uri',
-                          label: 'See more',
-                          uri: 'https://liff.line.me/1655315643-O6DqdDE8',
-                        },
-                      },
-                    ],
-                  },
-                },
+                ...rest
               ],
             },
           });
-        } else {
+        } 
+        else if (message.text === '/link') {
+            return client.replyMessage(event.replyToken, {
+              type: 'text',
+              text: `Hi ${profile.displayName}, silahkan akses App nya di\nhttps://liff.line.me/1655315643-O6DqdDE8`
+            });
+          }
+        else if (message.text === '/about') {
+            return client.replyMessage(event.replyToken, {
+              type: 'text',
+              text: 'Foody Ways, adalah platform food delivery berbasis LIFF, bisa diakses melalui https://liff.line.me/1655315643-O6DqdDE8'
+            });
+          }
+        else if (message.text.includes('/')) {
           return client.replyMessage(event.replyToken, {
             type: 'text',
-            text: 'Maaf command tidak diketahui silahkan kirim "/help" untuk petunjuk',
+            text: `Maaf ${profile.displayName} command yang kamu masukkan tidak diketahui silahkan kirim "/help" untuk petunjuk`,
           });
         }
       } else if (message.type === 'sticker') {
@@ -249,7 +245,7 @@ const mainProgram = async (event) => {
     default:
       return client.replyMessage(event.replyToken, {
         type: 'text',
-        text: 'Maaf command tidak diketahui silahkan kirim "/help" untuk petunjuk',
+        text: `Maaf ${profile.displayName} command yang kamu masukkan tidak diketahui silahkan kirim "/help" untuk petunjuk`,
       });
   }
 };
