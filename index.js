@@ -25,14 +25,30 @@ app.post('/webhook', line.middleware(config), (req, res) => {
 });
 
 function mainProgram(event) {
+  console.log(event);
   switch (event.type) {
     case 'join':
       return client.replyMessage(event.replyToken, {
         type: 'text',
         text: 'Hallo Semuanya, Seiga is here',
       });
+    case 'message':
+      if (event.text.toLowerCase().includes('halo' || 'hai' || 'salam')) {
+        return client.replyMessage(event.replyToken, {
+          type: 'text',
+          text: 'Halo Juga, Yoroshiku!!',
+        });
+      } else {
+        return client.replyMessage(event.replyToken, {
+          type: 'text',
+          text: 'Waduh saya tidak paham',
+        });
+      }
     default:
-      return client.replyMessage(event.replyToken, { type: 'text', text: 'Hello, world' });
+      return client.replyMessage(event.replyToken, {
+        type: 'text',
+        text: 'Waduh saya tidak paham',
+      });
   }
 }
 
