@@ -25,6 +25,7 @@ app.post('/webhook', line.middleware(config), (req, res) => {
 });
 
 function mainProgram(event) {
+  console.log(event);
   return client.replyMessage(event.replyToken, { type: 'text', text: 'Hello, world' }); //balas dengan pesan "Hello, world"
 }
 
