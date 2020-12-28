@@ -11,7 +11,6 @@ const config = {
 const client = new line.Client(config);
 
 app.use(cors());
-app.use(express.json({ extended: false }));
 
 app.get('/', (req, res) => {
   res.status(200).json({ message: 'Hello' });
