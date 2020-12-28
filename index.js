@@ -25,8 +25,15 @@ app.post('/webhook', line.middleware(config), (req, res) => {
 });
 
 function mainProgram(event) {
-  console.log(event);
-  return client.replyMessage(event.replyToken, { type: 'text', text: 'Hello, world' }); //balas dengan pesan "Hello, world"
+  switch (event.type) {
+    case 'join':
+      return client.replyMessage(event.replyToken, {
+        type: 'text',
+        text: 'Hallo Semuanya, Seiga is here',
+      });
+    default:
+      return client.replyMessage(event.replyToken, { type: 'text', text: 'Hello, world' });
+  }
 }
 
 app.listen(port, () => console.log(`Server Started at port ${port}`));
