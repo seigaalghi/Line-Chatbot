@@ -177,7 +177,7 @@ const mainProgram = async (event) => {
     case 'follow':
       return client.replyMessage(event.replyToken, {
         type: 'text',
-        text: `Hallo ${profile.displayName}, Foody Ways telah tiba di grup. Ketikan "/help" untuk petunjuk`,
+        text: `Hallo ${profile.displayName}, Terimakasih telah follow Foody Ways. Ketikan "/help" untuk petunjuk`,
       });
     case 'message':
       if (message.type === 'text') {
