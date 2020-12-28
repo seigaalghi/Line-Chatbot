@@ -87,6 +87,60 @@ const food = data.foods.map((food) => ({
     ],
   },
 }));
+const drink = data.drinks.map((drink) => ({
+  type: 'bubble',
+  hero: {
+    type: 'image',
+    size: 'full',
+    aspectRatio: '20:13',
+    aspectMode: 'cover',
+    url: drink.img,
+  },
+  body: {
+    type: 'box',
+    layout: 'vertical',
+    spacing: 'sm',
+    contents: [
+      {
+        type: 'text',
+        text: drink.name,
+        wrap: true,
+        weight: 'bold',
+        size: 'xl',
+      },
+      {
+        type: 'box',
+        layout: 'baseline',
+        contents: [
+          {
+            type: 'text',
+            text: `Rp.${drink.price}`,
+            wrap: true,
+            weight: 'bold',
+            size: 'xl',
+            flex: 0,
+          },
+        ],
+      },
+    ],
+  },
+  footer: {
+    type: 'box',
+    layout: 'vertical',
+    spacing: 'sm',
+    contents: [
+      {
+        type: 'button',
+        style: 'primary',
+        action: {
+          type: 'uri',
+          label: 'Open App',
+          uri: 'https://liff.line.me/1655315643-O6DqdDE8',
+        },
+      },
+    ],
+  },
+}));
 
 const mainProgram = async (event) => {
   console.log(event);
@@ -114,7 +168,8 @@ const mainProgram = async (event) => {
         } else if (message.text === '/help') {
           return client.replyMessage(event.replyToken, {
             type: 'text',
-            text: 'Silahkan ketikkan keyword berikut :\n/menu\n/hi\n/about\n/link',
+            text:
+              'Silahkan ketikkan keyword berikut :\n/food : Daftar Makanan\n/drink : Daftar Minuman\n/hi : Salam\n/about : Deskripsi App\n/link : App Link',
           });
         } else if (message.text === '/food') {
           return client.replyMessage(event.replyToken, {
@@ -138,7 +193,38 @@ const mainProgram = async (event) => {
                         action: {
                           type: 'uri',
                           label: 'See more',
-                          uri: 'https://linecorp.com',
+                          uri: 'https://liff.line.me/1655315643-O6DqdDE8',
+                        },
+                      },
+                    ],
+                  },
+                },
+              ],
+            },
+          });
+        } else if (message.text === '/drink') {
+          return client.replyMessage(event.replyToken, {
+            type: 'flex',
+            altText: 'this is a flex message',
+            contents: {
+              type: 'carousel',
+              contents: [
+                ...drink,
+                {
+                  type: 'bubble',
+                  body: {
+                    type: 'box',
+                    layout: 'vertical',
+                    spacing: 'sm',
+                    contents: [
+                      {
+                        type: 'button',
+                        flex: 1,
+                        gravity: 'center',
+                        action: {
+                          type: 'uri',
+                          label: 'See more',
+                          uri: 'https://liff.line.me/1655315643-O6DqdDE8',
                         },
                       },
                     ],
