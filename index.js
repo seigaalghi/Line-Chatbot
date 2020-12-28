@@ -18,14 +18,14 @@ app.get('/', (req, res) => {
 });
 
 app.post('/webhook', line.middleware(config), (req, res) => {
-  res.status(200).send('Oke');
+  Promise.all(req.body.events.map(mainProgram))
+    .then((result) => res.json(result))
+    .catch((error) => {
+      console.error(`Promise error ${error}`);
+    });
 });
 
 function mainProgram(event) {
-  if (event.type !== 'message' || event.message.type !== 'text') {
-    //jika user tidak mengirimkan pesan berupa teks (bukan gambar, lokasi, atau sejenisnya)
-    return Promise.resolve(null); //abaikan pesan
-  }
   return client.replyMessage(event.replyToken, { type: 'text', text: 'Hello, world' }); //balas dengan pesan "Hello, world"
 }
 
