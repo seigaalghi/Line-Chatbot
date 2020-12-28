@@ -46,19 +46,19 @@ const mainProgram = async (event) => {
     case 'follow':
       return client.replyMessage(event.replyToken, {
         type: 'text',
-        text: 'Hallo Semuanya, Foody Ways telah tiba di grup. Ketikan "/help" untuk petunjuk',
+        text: `Hallo ${profile.displayName}, Foody Ways telah tiba di grup. Ketikan "/help" untuk petunjuk`,
       });
     case 'message':
       if (message.type === 'text') {
         if (contains(message.text.toLowerCase(), ['/hai', '/halo', '/hi'])) {
           return client.replyMessage(event.replyToken, {
             type: 'text',
-            text: 'Halo Juga, Silahkan pesan makanan!!',
+            text: `Halo Juga ${profile.displayName}, Silahkan pesan makanan!!`,
           });
         } else if (message.text === '/help') {
           return client.replyMessage(event.replyToken, {
             type: 'text',
-            text: '/menu /hi /about /link',
+            text: 'Silahkan ketikkan keyword berikut :\n/menu\n/hi\n/about\n/link',
           });
         } else {
           return client.replyMessage(event.replyToken, {
