@@ -62,8 +62,9 @@ const mainProgram = async (event) => {
           });
         } else if (message.text === '/menu') {
           return client.replyMessage(event.replyToken, {
-            type: 'flex',
-            contents: {
+            type: 'template',
+            altText: 'Menu',
+            template: {
               type: 'carousel',
               contents: [
                 {
