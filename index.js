@@ -223,7 +223,7 @@ const mainProgram = async (event) => {
         } else if (message.text.includes('/')) {
           return client.replyMessage(event.replyToken, {
             type: 'text',
-            text: `Maaf ${profile.displayName} command yang kamu masukkan tidak diketahui silahkan kirim "/help" untuk petunjuk`,
+            text: `Hi ${profile.displayName}, Keyword yang kamu masukkan salah, silahkan ikuti petunjuk berikut :\n/hi : Salam\n/food : Daftar Makanan\n/drink : Daftar Minuman\n/about : Deskripsi App\n/link : App Link\n/help : Daftar Command`,
           });
         }
       } else if (message.type === 'sticker') {
@@ -234,7 +234,7 @@ const mainProgram = async (event) => {
         });
       }
     default:
-      return null;
+      return `Hi ${profile.displayName}, Keyword yang kamu masukkan salah, silahkan ikuti petunjuk berikut :\n/hi : Salam\n/food : Daftar Makanan\n/drink : Daftar Minuman\n/about : Deskripsi App\n/link : App Link\n/help : Daftar Command`;
   }
 };
 
