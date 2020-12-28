@@ -62,8 +62,8 @@ function mainProgram(event) {
       } else if (message.type === 'sticker') {
         return client.replyMessage(event.replyToken, {
           type: 'sticker',
-          stickerId: '33913792',
-          packageId: '10811',
+          stickerId: '52002744',
+          packageId: '11537',
         });
       }
     default:
