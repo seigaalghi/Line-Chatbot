@@ -32,9 +32,10 @@ function contains(target, pattern) {
   return value === 1;
 }
 
-function mainProgram(event) {
+const mainProgram = async (event) => {
   console.log(event);
-  const profile = client.getProfile(event.source.userId);
+  const profile = await client.getProfile(event.source.userId);
+  const message = event.message;
   console.log(profile);
   switch (event.type) {
     case 'join':
@@ -48,7 +49,6 @@ function mainProgram(event) {
         text: 'Hallo Semuanya, Foody Ways telah tiba di grup. Ketikan "/help" untuk petunjuk',
       });
     case 'message':
-      const message = event.message;
       if (message.type === 'text') {
         if (contains(message.text.toLowerCase(), ['/hai', '/halo', '/hi'])) {
           return client.replyMessage(event.replyToken, {
@@ -79,6 +79,6 @@ function mainProgram(event) {
         text: 'Maaf command tidak diketahui',
       });
   }
-}
+};
 
 app.listen(port, () => console.log(`Server Started at port ${port}`));
